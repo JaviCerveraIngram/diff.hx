@@ -1,0 +1,9 @@
+{
+    "name": "diff",
+    "version": "1.0.0",
+    "url": "https://github.com/JaviCerveraIngram/diff.hx",
+    "tags": ["diff", "differ", "diffing"],
+    "license": "Apache",
+    "contributors": ["JaviCerveraIngram"],
+    "releasenote": "Initial release."
+}
