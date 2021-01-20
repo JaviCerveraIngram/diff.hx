@@ -1,0 +1,112 @@
+## Flash 9+
+#-main TestMain
+#-lib munit
+#-lib hamcrest
+#-cp diff
+
+#-cp test
+#-swf-version 11
+#-swf _build/as3_test.swf
+
+## JavaScript
+#--next
+#-main TestMain
+#-lib munit
+#-lib hamcrest
+#-cp diff
+
+#-cp test
+#-js _build/js_test.js
+
+## Neko
+#--next
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp diff
+
+-cp test
+-neko _build/neko_test.n
+
+## CPP
+#--next
+#-main TestMain
+#-lib munit
+#-lib hamcrest
+#-cp diff
+
+#-cp test
+#-D HXCPP_M64
+#-cpp _build/cpp_test
+
+## Java
+--next
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp diff
+
+-cp test
+-java _build/java_test
+
+## CSharp
+--next
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp diff
+
+-cp test
+-cs _build/cs_test
+
+## Python
+--next
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp diff
+
+-cp test
+-python _build/python_test.py
+
+## PHP 7
+--next
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp diff
+
+-cp test
+-D php7
+-php _build/php_test
+
+## JavaScript NodeJS
+--next
+-main TestMain
+-lib munit
+-lib hamcrest
+-lib hxnodejs
+-cp diff
+
+-cp test
+-js _build/js_test.js
+
+## HashLink
+#--next
+#-main TestMain
+#-lib munit
+#-lib hamcrest
+#-cp diff
+
+#-cp test
+#-hl _build/hl_test.hl
+
+## LUA
+#--next
+#-main TestMain
+#-lib munit
+#-lib hamcrest
+#-cp diff
+
+#-cp test
+#-lua _build/lua_test.lua

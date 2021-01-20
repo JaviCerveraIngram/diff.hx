@@ -113,7 +113,7 @@ class Diff {
             if (Std.is(change, Array)) {
                 if (change.length == 2) {
                     // [old, new]
-                    Reflect.setField(out, k, change[1]);
+                    Reflect.setField(out, k, cast(change, Array<Dynamic>)[1]);
                 } else {
                     // [[a], [d], [c]]
                     final field = Reflect.field(out, k);
@@ -165,7 +165,7 @@ class Diff {
             if (Std.is(change, Array)) {
                 if (change.length == 2) {
                     // [old, new]
-                    changes.set(k, [change[1], change[0]]);
+                    changes.set(k, [cast(change, Array<Dynamic>)[1], cast(change, Array<Dynamic>)[0]]);
                 } else {
                     // [[a], [d], [c]]
                     changes.set(k, swapArray(change));
