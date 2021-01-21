@@ -29,15 +29,15 @@
 -neko _build/neko_test.n
 
 ## CPP
-#--next
-#-main TestMain
-#-lib munit
-#-lib hamcrest
-#-cp diff
+--next
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp diff
 
-#-cp test
+-cp test
 #-D HXCPP_M64
-#-cpp _build/cpp_test
+-cpp _build/cpp_test
 
 ## Java
 --next
