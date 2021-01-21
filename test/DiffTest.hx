@@ -268,7 +268,7 @@ class DiffTest {
             }
         };
         final diff = new Diff(first, second);
-        final expected = Helper.sortObject({
+        final expected = {
             a: {},
             d: {},
             c: {
@@ -292,7 +292,7 @@ class DiffTest {
                     }
                 }
             }
-        });
+        };
         Assert.isTrue(areJsonEqual(Json.stringify(expected), diff.toString()));
     }
 
