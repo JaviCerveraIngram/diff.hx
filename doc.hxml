@@ -1,0 +1,5 @@
+--macro include('diff')
+-dce no
+-lib dox
+-xml doc/doc.xml
+-cmd haxelib run dox -i doc -o doc -in "^diff" --toplevel-package diff --title "diff.hx documentation" -D website "https://www.cloudblue.com" -D source-path "https://github.com/JaviCerveraIngram/diff.hx/tree/master" -D description "A Haxe library to get the difference between two dynamic objects."

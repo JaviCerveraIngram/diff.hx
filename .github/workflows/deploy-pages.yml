@@ -1,0 +1,21 @@
+name: Deploy Pages
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Install Haxe 📥
+        run: ./.github/scripts/install_haxe.sh
+      - name: Install libs 📚
+        run: yes | haxelib install doc.hxml
+      - name: Build documentation 🔧
+        run: haxe doc.hxml
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: doc
+          CLEAN: false

@@ -6,11 +6,25 @@ package diff;
 
 import haxe.ds.StringMap;
 
+/**
+    The `Diff` class stores the difference between two Haxe dynamic objects `first` and `second`.
+    You can later `apply` the diff object to `first` to obtain `second`, or `swap` the diff and then
+    `apply` to `second` to get `first`.
+**/
 class Diff {
     private final a:StringMap<Dynamic>; // Additions
     private final d:StringMap<Dynamic>; // Deletions
     private final c:StringMap<Dynamic>; // Changes
 
+    /**
+        Creates a new `Diff` storing the differences between the two objects passed. The differences basically are:
+
+        - Additions: Fields present in `second` that are not present in `first`.
+        - Deletions: Fields present in `first` that are not present in `second`.
+        - Changes: Fields whose value has changed between `first` and `second`.
+
+        The class is capable of tracking changes inside arrays.
+    **/
     public function new(first:Dynamic, second:Dynamic) {
         checkStructs(first, second);
         final firstFields = Reflect.fields(first);
@@ -95,6 +109,11 @@ class Diff {
         ];
     }
 
+    /**
+        Applies to changes in `this` `Diff` to the dynamic object passed as argument.
+        If this method is called on the `first` object passed when constructing `this`,
+        then an object identical to `second` is returned.
+    **/
     public function apply(obj:Dynamic):Dynamic {
         final out = Reflect.copy(obj);
 
@@ -155,6 +174,11 @@ class Diff {
         return out;
     }
 
+    /**
+        Returns a new `Diff` that reverts the changes made by this one. If `apply` is called on
+        the returned `Diff` passing the `second` argument used to construct `this`, then and object
+        identical to the `first` argument used to construct `this` will be returned by `apply`.
+    **/
     public function swap():Diff {
         final additions = this.d;
         final deletions = this.a;
@@ -208,6 +232,9 @@ class Diff {
         ];
     }
 
+    /**
+        Returns a string with the Json representation of `this` `Diff`.
+    **/
     public function toString():String {
         return haxe.Json.stringify(this.toObject());
     }
