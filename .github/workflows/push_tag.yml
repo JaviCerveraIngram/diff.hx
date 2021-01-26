@@ -12,9 +12,9 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
-      - name: Push tag with VERSION file 📌
-        env:
-          VERSION: ${cat VERSION}
+      - name: Define VERSION 📝
+        run: echo "VERSION=$(cat VERSION)" >> $GITHUB_ENV
+      - name: Push VERSION tag 📌
         uses: actions-ecosystem/action-push-tag@v1
         with:
           tag: ${{ env.VERSION }}
