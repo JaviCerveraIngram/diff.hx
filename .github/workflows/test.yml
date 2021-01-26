@@ -6,6 +6,10 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
+      - name: Dump VERSION
+        env:
+          VERSION: ${cat VERSION}
+        run: echo "$VERSION"
       - name: Install Haxe 📥
         run: ./.github/scripts/install_haxe.sh
       - name: Install Haxe libs 📚
