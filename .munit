@@ -1,0 +1,6 @@
+version=2.3.5
+src=test
+bin=_build
+report=_report
+hxml=test.hxml
+classPaths=diff
