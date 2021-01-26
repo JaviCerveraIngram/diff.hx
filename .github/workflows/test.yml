@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Dump VERSION
         env:
-          VERSION: ${{ $(cat VERSION) }}
+          VERSION: ${{ cat VERSION }}
         run: echo "$VERSION"
       - name: Install Haxe 📥
         run: ./.github/scripts/install_haxe.sh
