@@ -12,13 +12,11 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
+      - name: Define VERSION
+        run: VERSION=$(cat VERSION)
       - name: Dump VERSION
-        env:
-          VERSION: ${{ $(cat VERSION) }}
         run: echo "$VERSION"
       - name: Push tag with VERSION file 📌
-        env:
-          VERSION: $(cat VERSION)
         uses: actions-ecosystem/action-push-tag@v1
         with:
           tag: ${VERSION}
