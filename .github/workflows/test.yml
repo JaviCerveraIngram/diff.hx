@@ -1,0 +1,13 @@
+name: test-workflow
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: add-apt-repository ppa:haxe/releases -y
+      - run: apt update
+      - run: apt install haxe=4.1.5 -y
+      - run: mkdir ~/haxelib && haxelib setup ~/haxelib
+      - run: yes | haxelib install test.hxml
+      - run: haxelib run munit test -result-exit-code
