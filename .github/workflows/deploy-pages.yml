@@ -1,6 +1,6 @@
 name: Deploy Pages
 on:
-  create:
+  push:
     tags:
       - '*'
 jobs:
