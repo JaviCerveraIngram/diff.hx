@@ -1,14 +1,17 @@
 name: Deploy Pages
-on: [push]
+on:
+  create:
+    tags:
+      - '*'
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
       - name: Install Haxe 📥
         run: ./.github/scripts/install_haxe.sh
-      - name: Install libs 📚
+      - name: Install Haxe libs 📚
         run: yes | haxelib install doc.hxml
       - name: Build documentation 🔧
         run: haxe doc.hxml

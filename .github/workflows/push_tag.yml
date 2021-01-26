@@ -1,0 +1,19 @@
+name: Push version tag
+on:
+  workflow_run:
+    workflows: ["Test"]
+    branches: [main]
+    types:
+      - completed
+jobs:
+  push-tag:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Push tag with VERSION file 📌
+        uses: actions-ecosystem/action-push-tag@v1
+        with:
+          tag: $(cat VERSION)
+          message: 'Tagging version $(cat VERSION)'
