@@ -5,9 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo add-apt-repository ppa:haxe/releases -y
-      - run: sudo apt update
-      - run: sudo apt install haxe -y
-      - run: mkdir ~/haxelib && haxelib setup ~/haxelib
+      - run: ./.github/scripts/install_haxe.sh
       - run: yes | haxelib install test.hxml
       - run: haxelib run munit test -result-exit-code
