@@ -1,0 +1,40 @@
+name: Deploy
+on:
+  workflow_run:
+    workflows: ["Test"]
+    branches: [main]
+    types:
+      - completed
+jobs:
+  push-tag:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Define VERSION 📝
+        run: echo "VERSION=$(cat VERSION)" >> $GITHUB_ENV
+      - name: Push VERSION tag 📌
+        uses: actions-ecosystem/action-push-tag@v1
+        with:
+          tag: ${{ env.VERSION }}
+          message: 'Tagging version ${{ env.VERSION }}'
+  deploy-pages:
+    needs: push-tags
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Install Haxe 📥
+        run: ./.github/scripts/install_haxe.sh
+      - name: Install Haxe libs 📚
+        run: yes | haxelib install doc.hxml
+      - name: Build documentation 🔧
+        run: haxe doc.hxml
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: doc
+          CLEAN: false
