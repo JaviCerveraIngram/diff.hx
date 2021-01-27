@@ -20,7 +20,7 @@ jobs:
           tag: ${{ env.VERSION }}
           message: 'Tagging version ${{ env.VERSION }}'
   deploy-pages:
-    needs: push-tags
+    needs: push-tag
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️

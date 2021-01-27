@@ -2,4 +2,4 @@
 -dce no
 -lib dox
 -xml doc/doc.xml
--cmd haxelib run dox -i doc -o doc -in "^diff" --toplevel-package diff --title "diff.hx documentation" -D version $(cat VERSION) -D website "https://www.cloudblue.com" -D source-path "https://github.com/JaviCerveraIngram/diff.hx/tree/main" -D description "A Haxe library to get the difference between two dynamic objects."
+-cmd haxelib run dox -i doc -o doc -in "^diff" --toplevel-package diff --title "Diff Documentation" -D version $(cat VERSION) -D website "https://www.cloudblue.com" -D source-path "https://github.com/JaviCerveraIngram/diff.hx/tree/main" -D description "A Haxe library to get the difference between two dynamic objects."
