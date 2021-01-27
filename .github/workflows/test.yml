@@ -14,3 +14,5 @@ jobs:
         run: haxelib run munit test -coverage -result-exit-code
       - name: Report coverage ☔
         uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
