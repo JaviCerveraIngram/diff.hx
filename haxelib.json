@@ -1,6 +1,6 @@
 {
     "name": "diff",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "url": "https://github.com/JaviCerveraIngram/diff.hx",
     "tags": ["diff", "differ", "diffing"],
     "license": "Apache",
