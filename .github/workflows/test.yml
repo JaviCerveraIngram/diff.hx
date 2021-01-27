@@ -13,4 +13,4 @@ jobs:
       - name: Run tests ⏩
         run: haxelib run munit test -coverage -result-exit-code
       - name: Report coverage ☔
-        run: bash <(curl -s https://codecov.io/bash)
+        uses: codecov/codecov-action@v1
