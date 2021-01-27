@@ -2,3 +2,5 @@
 _build
 _report
 doc
+coverage.json
+lcov.info

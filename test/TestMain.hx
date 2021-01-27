@@ -21,6 +21,10 @@ class TestMain
 		#if MCOVER
 			var client = new mcover.coverage.munit.client.MCoverPrintClient();
 			var httpClient = new HTTPClient(new mcover.coverage.munit.client.MCoverSummaryReportClient());
+			#if !nodejs
+				mcover.coverage.MCoverage.getLogger().addClient(new mcover.coverage.client.CodecovJsonPrintClient());
+				mcover.coverage.MCoverage.getLogger().addClient(new mcover.coverage.client.LcovPrintClient("Unittests"));
+			#end
 		#else
 			var client = new RichPrintClient();
 			var httpClient = new HTTPClient(new SummaryReportClient());
