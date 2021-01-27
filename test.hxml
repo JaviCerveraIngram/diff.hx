@@ -2,7 +2,7 @@
 #-main TestMain
 #-lib munit
 #-lib hamcrest
-#-cp diff
+#-cp test
 
 #-cp test
 #-swf-version 11
@@ -13,7 +13,7 @@
 #-main TestMain
 #-lib munit
 #-lib hamcrest
-#-cp diff
+#-cp test
 
 #-cp test
 #-js _build/js_test.js
@@ -23,7 +23,7 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp diff
+-cp test
 
 -cp test
 -neko _build/neko_test.n
@@ -33,7 +33,7 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp diff
+-cp test
 
 -cp test
 #-D HXCPP_M64
@@ -44,7 +44,7 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp diff
+-cp test
 
 -cp test
 -java _build/java_test
@@ -54,7 +54,7 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp diff
+-cp test
 
 -cp test
 -cs _build/cs_test
@@ -64,7 +64,7 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp diff
+-cp test
 
 -cp test
 -python _build/python_test.py
@@ -74,7 +74,7 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp diff
+-cp test
 
 -cp test
 -D php7
@@ -86,7 +86,7 @@
 -lib munit
 -lib hamcrest
 -lib hxnodejs
--cp diff
+-cp test
 
 -cp test
 -js _build/js_test.js
@@ -96,7 +96,7 @@
 #-main TestMain
 #-lib munit
 #-lib hamcrest
-#-cp diff
+#-cp test
 
 #-cp test
 #-hl _build/hl_test.hl
@@ -106,7 +106,7 @@
 #-main TestMain
 #-lib munit
 #-lib hamcrest
-#-cp diff
+#-cp test
 
 #-cp test
 #-lua _build/lua_test.lua

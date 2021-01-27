@@ -19,8 +19,26 @@ jobs:
         with:
           tag: ${{ env.VERSION }}
           message: 'Tagging version ${{ env.VERSION }}'
-  deploy-pages:
+  deploy-package:
     needs: push-tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Install Haxe 📥
+        run: ./.github/scripts/install_haxe.sh
+      - name: Define VERSION 📝
+        run: echo "VERSION=$(cat VERSION)" >> $GITHUB_ENV
+      - name: Set haxelib.json version 📝
+        run: sed -i "s/0.0.0/${{ env.VERSION }}/g" haxelib.json
+      - name: Zip package 📦
+        run: zip -9 -r -q diff *
+      - name: Deploy 🚀
+        env:
+          HAXELIB_PWD: ${{ secrets.HAXELIB_PWD }}
+        run: echo "$HAXELIB_PWD" | haxelib submit diff.zip
+  deploy-pages:
+    needs: deploy-package
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -38,21 +56,3 @@ jobs:
           BRANCH: gh-pages
           FOLDER: doc
           CLEAN: false
-  deploy-package:
-    needs: deploy-pages
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
-      - name: Install Haxe 📥
-        run: ./.github/scripts/install_haxe.sh
-      - name: Define VERSION 📝
-        run: echo "VERSION=$(cat VERSION)" >> $GITHUB_ENV
-      - name: Set haxelib.json version 📝
-        run: sed -i "s/0.0.0/${{ env.VERSION }}/g" haxelib.json
-      - name: Zip package 📦
-        run: zip -9 -r -q diff *
-      - name: Deploy 🚀
-        env:
-          HAXELIB_PWD: ${{ secrets.HAXELIB_PWD }}
-        run: echo "$HAXELIB_PWD" | haxelib submit diff.zip

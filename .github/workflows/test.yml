@@ -11,4 +11,6 @@ jobs:
       - name: Install Haxe libs 📚
         run: yes | haxelib install test.hxml
       - name: Run tests ⏩
-        run: haxelib run munit test -result-exit-code
+        run: haxelib run munit test -coverage -result-exit-code
+      - name: Report coverage ☔
+        uses: codecov/codecov-action@v1
